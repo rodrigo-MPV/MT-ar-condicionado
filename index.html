@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#031B34" />
+
+  <title>MT Ar-Condicionado — Instalação, Manutenção e Higienização</title>
+  <meta name="description" content="MT Ar-Condicionado: instalação, manutenção preventiva e corretiva, higienização, recarga de gás e venda de equipamentos. Atendimento residencial e comercial com tecnologia, eficiência e acabamento premium." />
+  <meta name="keywords" content="ar condicionado, instalação de ar condicionado, manutenção de ar condicionado, higienização de ar condicionado, recarga de gás, venda de ar condicionado, split, inverter, residencial, comercial, MT Ar-Condicionado" />
+  <meta name="author" content="MT Ar-Condicionado" />
+  <link rel="canonical" href="/mt-ar/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="MT Ar-Condicionado" />
+  <meta property="og:title" content="MT Ar-Condicionado — Climatização Premium" />
+  <meta property="og:description" content="Instalação, manutenção, higienização e venda de ar-condicionado com acabamento premium, tecnologia e eficiência energética." />
+  <meta property="og:url" content="/mt-ar/" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MT Ar-Condicionado — Climatização Premium" />
+  <meta name="twitter:description" content="Instalação, manutenção e higienização de ar-condicionado com padrão premium." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="img/logo.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HVACBusiness",
+    "name": "MT Ar-Condicionado",
+    "image": "/mt-ar/og.jpg",
+    "description": "Instalação, manutenção, higienização, recarga de gás e venda de ar-condicionado residencial e comercial.",
+    "priceRange": "$$",
+    "telephone": "+55-11-95493-7836",
+    "email": "carlosallbertoo961@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "R. Japurá - Jardim Novo Campo Limpo",
+      "addressLocality": "Embu das Artes",
+      "addressRegion": "SP",
+      "postalCode": "06826-480",
+      "addressCountry": "BR"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "14:00" }
+    ],
+    "areaServed": "Grande São Paulo",
+    "sameAs": ["https://www.google.com/maps/place/MT+Ar+condicionado"]
+  }
+  </script>
+</head>
+<body>
+  <!-- Loader -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__logo">
+      <img class="nav__logo-img" src="/img/logo.png" alt="Logo MT Ar-Condicionado" onerror="this.style.display='none'" />
+    </div>
+    <div class="loader__spinner"></div>
+    <div class="loader__bar"><span></span></div>
+    <p class="loader__text">Preparando o ambiente perfeito…</p>
+  </div>
+
+  <!-- Cursor customizado removido a pedido do cliente (melhora performance) -->
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- Animated background -->
+  <div class="bg-fx" aria-hidden="true">
+    <div class="bg-fx__gradient"></div>
+    <canvas id="snowCanvas"></canvas>
+    <div class="bg-fx__glow bg-fx__glow--1"></div>
+    <div class="bg-fx__glow bg-fx__glow--2"></div>
+    <div class="bg-fx__glow bg-fx__glow--3"></div>
+    <div class="bg-fx__lines">
+      <span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="nav" id="nav">
+    <div class="nav__inner glass">
+      <a href="#hero" class="nav__logo" aria-label="MT Ar-Condicionado — início">
+        <img class="nav__logo-img" src="/img/logo.png" alt="Logo MT Ar-Condicionado" onerror="this.style.display='none'" />
+        <span class="nav__logo-text">Ar-Condicionado</span>
+      </a>
+
+      <nav class="nav__links" aria-label="Navegação principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#processo">Processo</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#calculadora">Calculadoras</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="#contato" class="btn btn--primary btn--sm">Orçamento</a>
+        <button class="nav__burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="nav__mobile glass" id="navMobile" aria-hidden="true">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#processo">Processo</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#calculadora">Calculadoras</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contato">Contato</a>
+      <a href="#contato" class="btn btn--primary">Solicitar orçamento</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero__inner">
+        <div class="hero__eyebrow glass" data-aos="fade-down">
+          <span class="pulse-dot"></span> Climatização premium com padrão de engenharia
+        </div>
+        <h1 class="hero__title" data-aos="fade-up" data-aos-delay="100">
+          O <span class="grad-text">conforto perfeito</span><br />
+          para sua casa e seu negócio.
+        </h1>
+        <p class="hero__subtitle" data-aos="fade-up" data-aos-delay="200">
+          Instalação, manutenção e higienização de ar-condicionado com tecnologia,
+          eficiência energética e acabamento impecável — assinado pela MT Ar-Condicionado.
+        </p>
+        <div class="hero__cta" data-aos="fade-up" data-aos-delay="300">
+          <a href="#contato" class="btn btn--primary btn--lg">
+            <i class="fa-solid fa-snowflake"></i> Solicitar orçamento
+          </a>
+          <!-- WhatsApp de contato oficial: +55 11 95493-7836 -->
+          <a href="https://wa.me/5511954937836" target="_blank" rel="noopener" class="btn btn--ghost btn--lg">
+            <i class="fa-brands fa-whatsapp"></i> Falar no WhatsApp
+          </a>
+        </div>
+
+        <div class="hero__stats" data-aos="fade-up" data-aos-delay="450">
+          <div class="stat glass">
+            <b class="counter" data-target="2500">0</b><span>+ clientes</span>
+          </div>
+          <div class="stat glass">
+            <b class="counter" data-target="4300">0</b><span>projetos</span>
+          </div>
+          <div class="stat glass">
+            <b class="counter" data-target="12">0</b><span>anos</span>
+          </div>
+          <div class="stat glass">
+            <b><span class="counter" data-target="99">0</span>%</b><span>satisfação</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="#sobre" class="hero__scroll" aria-label="Rolar para próxima seção">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="section" id="sobre">
+      <div class="container grid-2">
+        <div data-aos="fade-right">
+          <span class="eyebrow">Sobre a MT</span>
+          <h2 class="section__title">Engenharia do conforto, feita com precisão.</h2>
+          <p class="section__lead">
+            Somos uma empresa especializada em climatização, com foco em projetos
+            residenciais e comerciais que exigem alto padrão técnico e estético.
+            Trabalhamos com as principais marcas do mercado e entregamos cada
+            instalação com o mesmo cuidado de uma obra de acabamento fino.
+          </p>
+          <ul class="check-list">
+            <li><i class="fa-solid fa-check"></i> Equipe técnica certificada</li>
+            <li><i class="fa-solid fa-check"></i> Ferramentas e instrumentos de alta precisão</li>
+            <li><i class="fa-solid fa-check"></i> Garantia por escrito em todos os serviços</li>
+            <li><i class="fa-solid fa-check"></i> Atendimento pontual e limpo</li>
+          </ul>
+        </div>
+        <div class="about-card glass" data-aos="fade-left">
+          <div class="about-card__ring"></div>
+          <div class="about-card__grid">
+            <div><i class="fa-solid fa-snowflake"></i><b>Frio potente</b><span>Cálculo térmico correto</span></div>
+            <div><i class="fa-solid fa-leaf"></i><b>Eficiência</b><span>Menor conta de luz</span></div>
+            <div><i class="fa-solid fa-shield-halved"></i><b>Confiança</b><span>Garantia real</span></div>
+            <div><i class="fa-solid fa-wrench"></i><b>Suporte</b><span>Pós-venda ativo</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
+    <section class="section" id="diferenciais">
+      <div class="container">
+        <header class="section__head" data-aos="fade-up">
+          <span class="eyebrow">Diferenciais</span>
+          <h2 class="section__title">Por que escolher a MT Ar-Condicionado</h2>
+        </header>
+        <div class="feature-grid">
+          <article class="feature glass tilt" data-aos="zoom-in">
+            <i class="fa-solid fa-medal icon-glow"></i>
+            <h3>Padrão premium</h3>
+            <p>Cabeamento oculto, acabamento alinhado e ambiente entregue impecável.</p>
+          </article>
+          <article class="feature glass tilt" data-aos="zoom-in" data-aos-delay="80">
+            <i class="fa-solid fa-bolt icon-glow"></i>
+            <h3>Eficiência energética</h3>
+            <p>Especificação correta para reduzir o consumo e ampliar a durabilidade.</p>
+          </article>
+          <article class="feature glass tilt" data-aos="zoom-in" data-aos-delay="160">
+            <i class="fa-solid fa-clock icon-glow"></i>
+            <h3>Pontualidade</h3>
+            <p>Chegamos no horário combinado. Sem improviso, sem sujeira, sem atraso.</p>
+          </article>
+          <article class="feature glass tilt" data-aos="zoom-in" data-aos-delay="240">
+            <i class="fa-solid fa-headset icon-glow"></i>
+            <h3>Suporte real</h3>
+            <p>Atendimento humano, rápido e resolutivo — antes, durante e depois.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section class="section" id="servicos">
+      <div class="container">
+        <header class="section__head" data-aos="fade-up">
+          <span class="eyebrow">Serviços</span>
+          <h2 class="section__title">Soluções completas em climatização</h2>
+          <p class="section__lead">Cada serviço é executado com processo próprio, checklist e garantia.</p>
+        </header>
+        <div class="service-grid">
+          <article class="service glass tilt" data-aos="fade-up">
+            <div class="service__icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+            <h3>Instalação de Ar Condicionado</h3>
+            <p>Instalação certificada de splits, inverters, multi-splits e VRF, com projeto e acabamento premium.</p>
+          </article>
+          <article class="service glass tilt" data-aos="fade-up" data-aos-delay="80">
+            <div class="service__icon"><i class="fa-solid fa-gears"></i></div>
+            <h3>Manutenção Preventiva</h3>
+            <p>Planos programados que ampliam a vida útil e reduzem o consumo do equipamento.</p>
+          </article>
+          <article class="service glass tilt" data-aos="fade-up" data-aos-delay="160">
+            <div class="service__icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <h3>Manutenção Corretiva</h3>
+            <p>Diagnóstico preciso e reparo rápido para restabelecer o conforto sem retrabalho.</p>
+          </article>
+          <article class="service glass tilt" data-aos="fade-up" data-aos-delay="240">
+            <div class="service__icon"><i class="fa-solid fa-spray-can-sparkles"></i></div>
+            <h3>Higienização</h3>
+            <p>Limpeza técnica profunda que elimina odores, fungos e restaura a qualidade do ar.</p>
+          </article>
+          <article class="service glass tilt" data-aos="fade-up">
+            <div class="service__icon"><i class="fa-solid fa-store"></i></div>
+            <h3>Venda de Equipamentos</h3>
+            <p>Especificação e fornecimento das melhores marcas com condição comercial diferenciada.</p>
+          </article>
+          <article class="service glass tilt" data-aos="fade-up" data-aos-delay="80">
+            <div class="service__icon"><i class="fa-solid fa-gas-pump"></i></div>
+            <h3>Recarga de Gás</h3>
+            <p>Recarga com procedimento correto, teste de estanqueidade e checagem completa.</p>
+          </article>
+          <article class="service glass tilt" data-aos="fade-up" data-aos-delay="160">
+            <div class="service__icon"><i class="fa-solid fa-house-chimney"></i></div>
+            <h3>Atendimento Residencial</h3>
+            <p>Projetos silenciosos, discretos e integrados à decoração do ambiente.</p>
+          </article>
+          <article class="service glass tilt" data-aos="fade-up" data-aos-delay="240">
+            <div class="service__icon"><i class="fa-solid fa-building"></i></div>
+            <h3>Atendimento Comercial</h3>
+            <p>Escritórios, lojas, clínicas e restaurantes com contratos de manutenção sob medida.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESSO -->
+    <section class="section" id="processo">
+      <div class="container">
+        <header class="section__head" data-aos="fade-up">
+          <span class="eyebrow">Processo</span>
+          <h2 class="section__title">Como trabalhamos</h2>
+          <p class="section__lead">Um método claro, do primeiro contato à entrega do ambiente.</p>
+        </header>
+        <ol class="timeline">
+          <li class="glass" data-aos="fade-up"><b>01</b><h4>Contato</h4><p>Você fala com um especialista humano, sem robôs.</p></li>
+          <li class="glass" data-aos="fade-up" data-aos-delay="80"><b>02</b><h4>Visita Técnica</h4><p>Medição, análise térmica e recomendação certa.</p></li>
+          <li class="glass" data-aos="fade-up" data-aos-delay="160"><b>03</b><h4>Instalação</h4><p>Execução limpa, com proteção do ambiente e acabamento premium.</p></li>
+          <li class="glass" data-aos="fade-up" data-aos-delay="240"><b>04</b><h4>Testes</h4><p>Pressão, vácuo, carga e desempenho conferidos.</p></li>
+          <li class="glass" data-aos="fade-up" data-aos-delay="320"><b>05</b><h4>Entrega</h4><p>Ambiente limpo, cliente treinado, garantia registrada.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- MARCAS ATENDIDAS + EMPRESAS PARCEIRAS
+         "Ecoforte" e "Expander" são empresas com contrato ativo. -->
+    <section class="section section--tight" id="marcas">
+      <div class="container">
+        <header class="section__head" data-aos="fade-up">
+          <span class="eyebrow">Marcas &amp; Parceiros</span>
+          <h2 class="section__title">Marcas atendidas e empresas parceiras</h2>
+          <p class="section__lead">Temos contrato ativo com <b>Ecoforte</b> e <b>Expander</b>, além de atender as principais marcas do mercado.</p>
+        </header>
+        <div class="brands" data-aos="fade-up">
+          <div class="brands__track">
+            <span class="brand-partner">Ecoforte</span><span class="brand-partner">Expander</span>
+            <span>LG</span><span>Samsung</span><span>Carrier</span><span>Daikin</span>
+            <span>Elgin</span><span>Springer</span><span>Midea</span><span>Gree</span><span>Fujitsu</span>
+            <span class="brand-partner">Ecoforte</span><span class="brand-partner">Expander</span>
+            <span>LG</span><span>Samsung</span><span>Carrier</span><span>Daikin</span>
+            <span>Elgin</span><span>Springer</span><span>Midea</span><span>Gree</span><span>Fujitsu</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIA + COMPARADOR -->
+    <section class="section" id="galeria">
+      <div class="container">
+        <header class="section__head" data-aos="fade-up">
+          <span class="eyebrow">Galeria</span>
+          <h2 class="section__title">Antes &amp; depois</h2>
+          <p class="section__lead">Arraste o divisor e veja a transformação real de cada projeto.</p>
+        </header>
+
+        <div class="compare glass" data-aos="zoom-in" id="compare">
+          <div class="compare__before" style="background-image: linear-gradient(135deg,#1a2436,#0b1220);">
+            <span class="compare__tag">Antes</span>
+          </div>
+          <div class="compare__after" id="compareAfter" style="background-image: linear-gradient(135deg,#00b8ff,#0b4f8c);">
+            <span class="compare__tag compare__tag--after">Depois</span>
+          </div>
+          <div class="compare__handle" id="compareHandle"><i class="fa-solid fa-left-right"></i></div>
+        </div>
+
+        <div class="gallery-filter" data-aos="fade-up">
+          <button class="chip is-active" data-filter="all">Todos</button>
+          <button class="chip" data-filter="antes">Antes</button>
+          <button class="chip" data-filter="depois">Depois</button>
+        </div>
+
+        <div class="gallery" id="gallery">
+          <figure class="gallery__item glass" data-cat="antes" data-aos="fade-up"><div class="ph ph--1"></div><figcaption>Sala residencial — antes</figcaption></figure>
+          <figure class="gallery__item glass" data-cat="depois" data-aos="fade-up" data-aos-delay="60"><div class="ph ph--2"></div><figcaption>Sala residencial — depois</figcaption></figure>
+          <figure class="gallery__item glass" data-cat="antes" data-aos="fade-up" data-aos-delay="120"><div class="ph ph--3"></div><figcaption>Escritório — antes</figcaption></figure>
+          <figure class="gallery__item glass" data-cat="depois" data-aos="fade-up" data-aos-delay="180"><div class="ph ph--4"></div><figcaption>Escritório — depois</figcaption></figure>
+          <figure class="gallery__item glass" data-cat="antes" data-aos="fade-up" data-aos-delay="240"><div class="ph ph--5"></div><figcaption>Loja — antes</figcaption></figure>
+          <figure class="gallery__item glass" data-cat="depois" data-aos="fade-up" data-aos-delay="300"><div class="ph ph--6"></div><figcaption>Loja — depois</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- AVALIAÇÕES -->
+    <section class="section" id="avaliacoes">
+      <div class="container">
+        <header class="section__head" data-aos="fade-up">
+          <span class="eyebrow">Avaliações no Google</span>
+          <h2 class="section__title">O que dizem nossos clientes</h2>
+          <p class="section__lead">Depoimentos reais de clientes atendidos em Embu das Artes e região.</p>
+        </header>
+        <div class="swiper reviews" data-aos="fade-up">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <article class="review glass">
+                <div class="review__avatar">MS</div>
+                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p>“Instalação impecável. Sem furos aparentes, sem sujeira. Parece obra de decoração.”</p>
+                <b>Marina Souza</b><span>Residencial</span>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="review glass">
+                <div class="review__avatar">RC</div>
+                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p>“Assumiram a manutenção da nossa rede de lojas. Zero paradas em 2 anos.”</p>
+                <b>Rafael Costa</b><span>Comercial</span>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="review glass">
+                <div class="review__avatar">JL</div>
+                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p>“Higienização profissional. O cheiro do ar melhorou no primeiro dia.”</p>
+                <b>Juliana Lima</b><span>Residencial</span>
+              </article>
+            </div>
+            <div class="swiper-slide">
+              <article class="review glass">
+                <div class="review__avatar">AB</div>
+                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p>“Explicaram tudo antes, cumpriram prazo e ainda organizaram o cabeamento. Recomendo.”</p>
+                <b>André Barros</b><span>Escritório</span>
+              </article>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+        <p class="muted" style="text-align:center; margin-top:20px" data-aos="fade-up">
+          <a class="btn btn--ghost btn--sm" href="https://www.google.com/maps/place/MT+Ar+condicionado/@-23.6614276,-46.8047604,17z/data=!3m1!4b1!4m6!3m5!1s0x94ce53d6edd12ce5:0x6dbdfdb293f0aaa4!8m2!3d-23.6614276!4d-46.8021855" target="_blank" rel="noopener">
+            <i class="fa-brands fa-google"></i> Ver todas as avaliações no Google
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- CALCULADORAS -->
+    <section class="section" id="calculadora">
+      <div class="container grid-2">
+        <div class="calc glass" data-aos="fade-right">
+          <span class="eyebrow">Calculadora</span>
+          <h3>Quantos BTUs você precisa?</h3>
+          <p class="muted">Cálculo rápido para dimensionar o equipamento ideal.</p>
+          <div class="field">
+            <label for="btuArea">Metragem do ambiente (m²)</label>
+            <input id="btuArea" type="number" min="1" value="15" />
+          </div>
+          <div class="field">
+            <label for="btuPessoas">Quantidade de pessoas</label>
+            <input id="btuPessoas" type="number" min="1" value="2" />
+          </div>
+          <div class="field">
+            <label for="btuEletronicos">Quantidade de eletrônicos</label>
+            <input id="btuEletronicos" type="number" min="0" value="2" />
+          </div>
+          <div class="result">
+            <span>Recomendado</span>
+            <b id="btuResult">9.000 BTUs</b>
+          </div>
+        </div>
+
+        <div class="calc glass" data-aos="fade-left">
+          <span class="eyebrow">Orçamento estimado</span>
+          <h3>Simulador de orçamento</h3>
+          <p class="muted">Valor aproximado — o orçamento oficial é feito após visita técnica.</p>
+          <div class="field">
+            <label for="orcTipo">Tipo</label>
+            <select id="orcTipo">
+              <option value="split">Split</option>
+              <option value="inverter">Split Inverter</option>
+              <option value="multi">Multi-Split</option>
+              <option value="piso">Piso-teto</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="orcBtu">BTUs</label>
+            <select id="orcBtu">
+              <option value="9000">9.000</option>
+              <option value="12000">12.000</option>
+              <option value="18000">18.000</option>
+              <option value="24000">24.000</option>
+              <option value="30000">30.000</option>
+              <option value="36000">36.000</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="orcServico">Serviço</label>
+            <select id="orcServico">
+              <option value="instalacao">Instalação</option>
+              <option value="manutencao">Manutenção</option>
+              <option value="higienizacao">Higienização</option>
+              <option value="recarga">Recarga de gás</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="orcCidade">Cidade</label>
+            <input id="orcCidade" type="text" placeholder="Sua cidade" />
+          </div>
+          <div class="result">
+            <span>Estimativa</span>
+            <b id="orcResult">R$ 0,00</b>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AGENDAMENTO / FORM -->
+    <section class="section" id="contato">
+      <div class="container grid-2">
+        <div data-aos="fade-right">
+          <span class="eyebrow">Agendamento</span>
+          <h2 class="section__title">Solicite seu orçamento</h2>
+          <p class="section__lead">Preencha o formulário e um especialista entra em contato em minutos, no horário comercial.</p>
+          <!-- Contatos oficiais MT Ar-Condicionado -->
+          <ul class="check-list">
+            <li><i class="fa-brands fa-whatsapp"></i> <a href="https://wa.me/5511954937836" target="_blank" rel="noopener">(11) 95493-7836</a></li>
+            <li><i class="fa-solid fa-envelope"></i> <a href="mailto:carlosallbertoo961@gmail.com">carlosallbertoo961@gmail.com</a></li>
+            <li><i class="fa-solid fa-location-dot"></i> Embu das Artes - SP</li>
+            <li><i class="fa-solid fa-clock"></i> Seg a Sex, 08h às 18h &nbsp;·&nbsp; Sáb, 08h às 14h</li>
+            <li><i class="fa-solid fa-handshake"></i> Contratos ativos: Ecoforte e Expander</li>
+          </ul>
+        </div>
+
+        <form class="form glass" id="contactForm" data-aos="fade-left" novalidate>
+          <div class="field">
+            <label for="fNome">Nome</label>
+            <input id="fNome" name="nome" required />
+          </div>
+          <div class="grid-2 gap-sm">
+            <div class="field">
+              <label for="fTel">Telefone</label>
+              <input id="fTel" name="telefone" required inputmode="tel" />
+            </div>
+            <div class="field">
+              <label for="fEmail">E-mail</label>
+              <input id="fEmail" name="email" type="email" required />
+            </div>
+          </div>
+          <div class="grid-2 gap-sm">
+            <div class="field">
+              <label for="fCidade">Cidade</label>
+              <input id="fCidade" name="cidade" required />
+            </div>
+            <div class="field">
+              <label for="fServico">Serviço</label>
+              <select id="fServico" name="servico">
+                <option>Instalação</option>
+                <option>Manutenção Preventiva</option>
+                <option>Manutenção Corretiva</option>
+                <option>Higienização</option>
+                <option>Recarga de Gás</option>
+                <option>Venda de Equipamento</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="fMsg">Mensagem</label>
+            <textarea id="fMsg" name="mensagem" rows="4" placeholder="Conte um pouco sobre o ambiente e a necessidade"></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--lg btn--block">
+            <i class="fa-solid fa-paper-plane"></i> Enviar solicitação
+          </button>
+          <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <header class="section__head" data-aos="fade-up">
+          <span class="eyebrow">FAQ</span>
+          <h2 class="section__title">Perguntas frequentes</h2>
+        </header>
+        <div class="faq">
+          <details class="glass" data-aos="fade-up">
+            <summary>Quanto tempo dura uma instalação?</summary>
+            <p>Uma instalação padrão residencial leva em média de 3 a 5 horas, dependendo da distância entre a evaporadora e a condensadora.</p>
+          </details>
+          <details class="glass" data-aos="fade-up">
+            <summary>Com que frequência devo fazer a higienização?</summary>
+            <p>Recomendamos higienização a cada 6 meses em ambientes residenciais e a cada 3 meses em ambientes comerciais.</p>
+          </details>
+          <details class="glass" data-aos="fade-up">
+            <summary>Vocês emitem nota fiscal e dão garantia?</summary>
+            <p>Sim. Todos os serviços possuem nota fiscal, garantia por escrito e ART quando aplicável.</p>
+          </details>
+          <details class="glass" data-aos="fade-up">
+            <summary>Trabalham com contratos para empresas?</summary>
+            <p>Sim. Oferecemos planos mensais de manutenção sob medida para lojas, escritórios, clínicas e restaurantes.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAPA -->
+    <section class="section section--tight" id="mapa">
+      <div class="container">
+        <header class="section__head" data-aos="fade-up">
+          <span class="eyebrow">Onde estamos</span>
+          <h2 class="section__title">R. Japurá — Embu das Artes, SP</h2>
+          <p class="section__lead">Atendemos toda a região metropolitana de São Paulo. Passe por aqui ou solicite visita técnica.</p>
+        </header>
+        <div class="map glass" data-aos="fade-up">
+          <iframe
+            title="Localização MT Ar-Condicionado — R. Japurá, Jardim Novo Campo Limpo, Embu das Artes - SP"
+            src="https://www.google.com/maps?q=R.%20Japur%C3%A1%20-%20Jardim%20Novo%20Campo%20Limpo%2C%20Embu%20das%20Artes%20-%20SP%2C%2006826-480&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
+        <p class="muted" style="margin-top:14px; text-align:center">
+          <a href="https://www.google.com/maps/place/MT+Ar+condicionado/@-23.6614276,-46.8047604,17z/data=!3m1!4b1!4m6!3m5!1s0x94ce53d6edd12ce5:0x6dbdfdb293f0aaa4!8m2!3d-23.6614276!4d-46.8021855" target="_blank" rel="noopener">
+            <i class="fa-solid fa-up-right-from-square"></i> Abrir no Google Maps
+          </a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <div class="nav__logo">
+          <img src="/img/logo.png" alt="Logo MT Ar-Condicionado"/>
+          <span class="nav__logo-text">Ar-Condicionado</span>
+        </div>
+        <p class="muted" style="margin-top:12px">Climatização premium para residências e empresas. Instalação, manutenção, higienização, recarga de gás e venda de equipamentos. Parceiros: Ecoforte e Expander.</p>
+      </div>
+      <div>
+        <h5>Serviços</h5>
+        <ul>
+          <li><a href="#servicos">Instalação</a></li>
+          <li><a href="#servicos">Manutenção</a></li>
+          <li><a href="#servicos">Higienização</a></li>
+          <li><a href="#servicos">Recarga de gás</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Empresa</h5>
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#processo">Processo</a></li>
+          <li><a href="#galeria">Galeria</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contato</h5>
+        <ul>
+          <li><i class="fa-brands fa-whatsapp"></i> <a href="https://wa.me/5511954937836" target="_blank" rel="noopener">(11) 95493-7836</a></li>
+          <li><i class="fa-solid fa-envelope"></i> <a href="mailto:carlosallbertoo961@gmail.com">carlosallbertoo961@gmail.com</a></li>
+          <li><i class="fa-solid fa-location-dot"></i> Embu das Artes - SP</li>
+          <li><i class="fa-solid fa-clock"></i> Seg–Sex 08–18h · Sáb 08–14h</li>
+          <li><i class="fa-solid fa-handshake"></i> Parceiros: Ecoforte, Expander</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom container">
+      <span>© <span id="year"></span> MT Ar-Condicionado. Todos os direitos reservados.</span>
+      <span>Feito com precisão de engenharia.</span>
+    </div>
+  </footer>
+
+  <!-- Floating buttons -->
+  <!-- Botão flutuante do WhatsApp (contato: +55 11 95493-7836) -->
+  <a href="https://wa.me/5511954937836" target="_blank" rel="noopener" class="fab fab--wa" aria-label="Falar no WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+  <button class="fab fab--top" id="toTop" aria-label="Voltar ao topo">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Libs -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

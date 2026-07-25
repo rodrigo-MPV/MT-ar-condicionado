@@ -32,28 +32,33 @@
   --font: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
 
-/* ---------- Tema claro (light mode) ----------
-   Sobrescreve variáveis + força cores escuras nos textos para
-   não ficarem invisíveis sobre o fundo claro. */
+/* =========================================================
+   MODO CLARO (CORRIGIDO)
+   ========================================================= */
 body.light {
   --c-navy-950: #eef6fd;
   --grad-hero: radial-gradient(1200px 800px at 15% 10%, rgba(0,184,255,.35), transparent 60%),
                radial-gradient(1000px 700px at 90% 20%, rgba(11,79,140,.15), transparent 60%),
                linear-gradient(180deg, #eaf4fb 0%, #ffffff 60%, #eaf4fb 100%);
-  --glass-bg: rgba(255,255,255,.7);
+  --glass-bg: rgba(255,255,255,.75);
   --glass-brd: rgba(11,79,140,.18);
   --glass-hi:  rgba(11,79,140,.35);
   color-scheme: light;
   color: #0b1220;
 }
-/* Textos e links principais no modo claro */
-body.light .footer,
-body.light .nav__links a,
-body.light .nav__mobile a,
+
+body.light,
+body.light main,
+body.light .nav__logo-text,
 body.light .hero__title,
 body.light .hero__subtitle,
 body.light .section__title,
 body.light .section__lead,
+body.light p, body.light li, body.light span,
+body.light h1, body.light h2, body.light h3, body.light h4, body.light h5, body.light h6,
+body.light a, body.light b, body.light strong,
+body.light label, body.light summary,
+body.light figcaption, body.light em,
 body.light .feature h3, body.light .feature p,
 body.light .service h3, body.light .service p,
 body.light .timeline li h4, body.light .timeline li p,
@@ -61,18 +66,35 @@ body.light .review p, body.light .review b, body.light .review span,
 body.light .calc h3, body.light .calc p,
 body.light .field label,
 body.light .faq summary, body.light .faq p,
-body.light .footer ul, body.light .footer__bottom,
+body.light .footer, body.light .footer ul, body.light .footer__bottom,
+body.light .footer h5, body.light .footer a, body.light .footer p, body.light .footer span, body.light .footer li,
 body.light .hero__stats span,
 body.light .about-card__grid b, body.light .about-card__grid span,
 body.light .check-list, body.light .check-list a,
 body.light .gallery__item figcaption,
-body.light .brands__track span,
-body.light .loader__text { color: #0b1220; }
+body.light .loader__text,
+body.light .contact-card h3, body.light .contact-card p,
+body.light .diploma-area h3, body.light .diploma-area p,
+body.light .nav__links a,
+body.light .nav__mobile a,
+body.light .hero__cta a,
+body.light .btn--ghost,
+body.light .chip,
+body.light .contact-info li,
+body.light .contact-info a,
+body.light .gallery-block__title,
+body.light .partner-card h3, body.light .partner-card p {
+  color: #0b1220;
+}
+
 body.light .muted { color: rgba(11,18,32,.7); }
-body.light .hero__stats b,
+body.light .hero__stats b { color: #0B4F8C; }
 body.light .result b { color: #0B4F8C; }
 body.light .result span { color: rgba(11,18,32,.7); }
-body.light .form__status { color: #0b1220; }
+body.light .footer h5 { color: #0B4F8C; }
+body.light .eyebrow { color: #0B4F8C; background: rgba(11,79,140,.1); border-color: rgba(11,79,140,.25); }
+body.light .hero__eyebrow { color: #0b1220; }
+
 body.light .field input,
 body.light .field select,
 body.light .field textarea {
@@ -80,40 +102,23 @@ body.light .field textarea {
   color: #0b1220;
   border-color: rgba(11,79,140,.2);
 }
-body.light .chip { color: #0b1220; background: rgba(255,255,255,.7); }
-body.light .fab--top { color: #fff; }
+body.light .field select option { background: #fff; color: #0b1220; }
 
-/* Rede de segurança: força tons escuros em qualquer texto solto no modo claro.
-   Elementos com fundo colorido (botões, badges, avatares) mantêm o branco. */
-body.light main,
-body.light main h1, body.light main h2, body.light main h3,
-body.light main h4, body.light main h5, body.light main h6,
-body.light main p, body.light main li, body.light main span,
-body.light main a, body.light main b, body.light main strong,
-body.light main small, body.light main label, body.light main summary,
-body.light main figcaption, body.light main em,
-body.light .nav__logo-text,
-body.light .footer h5,
-body.light .footer a,
-body.light .footer p,
-body.light .footer span,
-body.light .footer li { color: #0b1220; }
-body.light .muted, body.light main .muted { color: rgba(11,18,32,.7); }
-/* Preserva branco em superfícies com fundo colorido */
 body.light .btn--primary, body.light .btn--primary *,
 body.light .nav__logo-mark,
 body.light .review__avatar,
 body.light .fab, body.light .fab *,
 body.light .chip.is-active, body.light .chip.is-active *,
-body.light .process li b { color: #fff; }
-/* Botão ghost fica legível sobre fundo claro */
+body.light .timeline li b { color: #fff; }
+
 body.light .btn--ghost { color: #0B4F8C; border-color: rgba(11,79,140,.35); }
 body.light .btn--ghost:hover { background: rgba(11,79,140,.08); }
-/* Eyebrow mantém azul, mas mais escuro para contraste */
-body.light .eyebrow { color: #0B4F8C; background: rgba(11,79,140,.1); border-color: rgba(11,79,140,.25); }
-body.light .footer h5 { color: #0B4F8C; }
 
-/* ---------- Base ---------- */
+body.light .map iframe { filter: none; }
+
+/* =========================================================
+   BASE
+   ========================================================= */
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -142,7 +147,9 @@ button { font-family: inherit; }
   color: transparent;
 }
 
-/* ---------- Glass ---------- */
+/* =========================================================
+   GLASS
+   ========================================================= */
 .glass {
   background: var(--glass-bg);
   border: 1px solid var(--glass-brd);
@@ -151,7 +158,9 @@ button { font-family: inherit; }
   box-shadow: var(--shadow-soft);
 }
 
-/* ---------- Background FX ---------- */
+/* =========================================================
+   BACKGROUND FX
+   ========================================================= */
 .bg-fx { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
 .bg-fx__gradient { position: absolute; inset: -20%; background: var(--grad-hero); animation: floatBg 22s ease-in-out infinite alternate; }
 @keyframes floatBg { from { transform: translate3d(0,0,0) } to { transform: translate3d(-2%, -1%, 0) } }
@@ -176,11 +185,9 @@ button { font-family: inherit; }
 
 #snowCanvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 
-/* ---------- Cursor customizado removido ----------
-   O cursor personalizado foi retirado para melhorar a
-   performance e a experiência do usuário. */
-
-/* ---------- Loader ---------- */
+/* =========================================================
+   LOADER
+   ========================================================= */
 .loader {
   position: fixed; inset: 0; background: #031B34; z-index: 10000;
   display: grid; place-items: center; align-content: center; gap: 18px;
@@ -188,11 +195,13 @@ button { font-family: inherit; }
 }
 .loader.is-hidden { opacity: 0; visibility: hidden; }
 .loader__logo {
-  width: 80px; height: 80px; border-radius: 22px;
+  width: 120px; height: 120px; border-radius: 26px;
   background: var(--grad-primary); display: grid; place-items: center;
   font-weight: 900; font-size: 28px; color: white;
   box-shadow: var(--shadow-glow);
+  padding: 10px;
 }
+.loader__logo img { width: 100%; height: 100%; object-fit: contain; }
 .loader__spinner {
   width: 44px; height: 44px; border-radius: 50%;
   border: 3px solid rgba(87,217,255,.2); border-top-color: #57D9FF;
@@ -204,14 +213,18 @@ button { font-family: inherit; }
 @keyframes bar { to { width: 100%; } }
 .loader__text { color: rgba(234,249,255,.7); font-size: 14px; }
 
-/* ---------- Scroll progress ---------- */
+/* =========================================================
+   SCROLL PROGRESS
+   ========================================================= */
 .scroll-progress {
   position: fixed; top: 0; left: 0; height: 3px; width: 0;
   background: var(--grad-primary); z-index: 9998;
   box-shadow: 0 0 12px rgba(0,184,255,.6);
 }
 
-/* ---------- Nav ---------- */
+/* =========================================================
+   NAVBAR
+   ========================================================= */
 .nav { position: fixed; top: 16px; left: 0; right: 0; z-index: 100; transition: top .3s; }
 .nav.is-scrolled { top: 8px; }
 .nav__inner {
@@ -251,7 +264,9 @@ button { font-family: inherit; }
   .nav__burger { display: flex; }
 }
 
-/* ---------- Buttons ---------- */
+/* =========================================================
+   BUTTONS
+   ========================================================= */
 .btn {
   display: inline-flex; align-items: center; gap: 10px; justify-content: center;
   padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 14px;
@@ -267,7 +282,9 @@ button { font-family: inherit; }
 .btn--ghost { background: transparent; color: #fff; border-color: var(--glass-hi); backdrop-filter: blur(10px); }
 .btn--ghost:hover { background: rgba(255,255,255,.08); }
 
-/* ---------- Sections ---------- */
+/* =========================================================
+   SECTIONS
+   ========================================================= */
 .section { padding: 120px 0; position: relative; }
 .section--tight { padding: 70px 0; }
 .section__head { max-width: 780px; margin: 0 auto 60px; text-align: center; }
@@ -286,11 +303,29 @@ button { font-family: inherit; }
 .gap-sm { gap: 16px; }
 @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
 
-/* ---------- HERO ---------- */
+/* =========================================================
+   HERO
+   ========================================================= */
 .hero {
   min-height: 100vh; display: grid; place-items: center; position: relative; padding: 160px 20px 100px;
 }
 .hero__inner { max-width: 1000px; text-align: center; }
+
+/* LOGO GRANDE NA HERO */
+.hero__logo {
+  margin-bottom: 30px;
+  display: inline-block;
+}
+.hero__logo-img {
+  width: 150px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(0,184,255,.4);
+  transition: transform .3s ease;
+  
+}
+.hero__logo-img:hover { transform: scale(1.05); }
+
 .hero__eyebrow {
   display: inline-flex; align-items: center; gap: 10px;
   padding: 8px 16px; border-radius: 999px;
@@ -334,7 +369,9 @@ button { font-family: inherit; }
 }
 @keyframes scroll { 0%{opacity:1;top:8px} 60%{opacity:0;top:24px} 100%{opacity:0;top:8px} }
 
-/* ---------- About ---------- */
+/* =========================================================
+   ABOUT
+   ========================================================= */
 .about-card { padding: 34px; position: relative; overflow: hidden; }
 .about-card__ring {
   position: absolute; width: 320px; height: 320px; border-radius: 50%;
@@ -350,7 +387,9 @@ button { font-family: inherit; }
 .check-list { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 10px; }
 .check-list i { color: #00B8FF; margin-right: 10px; }
 
-/* ---------- Feature grid ---------- */
+/* =========================================================
+   FEATURE GRID
+   ========================================================= */
 .feature-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
 .feature { padding: 28px; text-align: center; transition: transform .4s, box-shadow .4s; }
 .feature:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,184,255,.25); }
@@ -361,7 +400,9 @@ button { font-family: inherit; }
 @media (max-width: 900px) { .feature-grid { grid-template-columns: repeat(2,1fr); } }
 @media (max-width: 500px) { .feature-grid { grid-template-columns: 1fr; } }
 
-/* ---------- Services ---------- */
+/* =========================================================
+   SERVICES
+   ========================================================= */
 .service-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 22px; }
 .service { padding: 30px; transition: transform .35s, box-shadow .35s; position: relative; overflow: hidden; }
 .service::before {
@@ -379,10 +420,157 @@ button { font-family: inherit; }
 }
 .service h3 { margin: 4px 0 10px; font-size: 18px; }
 .service p { color: rgba(234,249,255,.75); font-size: 14px; margin: 0; }
-@media (max-width: 1024px) { .service-grid { grid-template-columns: repeat(2,1fr); } }
-@media (max-width: 560px)  { .service-grid { grid-template-columns: 1fr; } }
 
-/* ---------- Timeline ---------- */
+@media (max-width: 1200px) { .service-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 600px)  { .service-grid { grid-template-columns: 1fr; } }
+
+/* =========================================================
+   GALERIA DE FOTOS (CARROSSÉIS COM LIGHTBOX)
+   ========================================================= */
+.gallery-block {
+  margin-bottom: 60px;
+}
+.gallery-block__title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #57D9FF;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  border-left: 4px solid #57D9FF;
+}
+
+/* Swiper da galeria */
+.gallery-swiper {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Cada slide da galeria */
+.gallery-swiper .swiper-slide {
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.2);
+}
+
+/* Imagens dentro do carrossel */
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform .3s ease;
+}
+.gallery-img:hover {
+  transform: scale(1.03);
+}
+
+/* Botões de navegação do Swiper */
+.gallery-swiper .swiper-button-prev,
+.gallery-swiper .swiper-button-next {
+  color: #fff;
+  background: rgba(0,0,0,.4);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  transition: background .3s;
+}
+.gallery-swiper .swiper-button-prev:hover,
+.gallery-swiper .swiper-button-next:hover {
+  background: rgba(0,184,255,.6);
+}
+.gallery-swiper .swiper-button-prev::after,
+.gallery-swiper .swiper-button-next::after {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Paginação do Swiper */
+.gallery-swiper .swiper-pagination-bullet {
+  background: #57D9FF;
+  opacity: .5;
+}
+.gallery-swiper .swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
+/* =========================================================
+   LIGHTBOX (ampliação da foto ao clicar)
+   ========================================================= */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 27, 52, .95);
+  backdrop-filter: blur(20px);
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility .3s ease;
+  cursor: zoom-out;
+}
+.lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+.lightbox__img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.6);
+  cursor: default;
+}
+.lightbox__close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.2);
+  color: #fff;
+  font-size: 22px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background .3s;
+  z-index: 2;
+}
+.lightbox__close:hover {
+  background: rgba(255,255,255,.25);
+}
+
+/* =========================================================
+   DIPLOMA AREA
+   ========================================================= */
+.diploma-area {
+  padding: 50px 30px;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  transition: transform .3s ease;
+}
+.diploma-area:hover { transform: translateY(-5px); }
+.diploma-area__icon {
+  font-size: 60px;
+  color: #57D9FF;
+  margin-bottom: 20px;
+  display: block;
+  text-shadow: 0 0 30px rgba(87,217,255,.5);
+}
+.diploma-area h3 { font-size: 24px; margin-bottom: 10px; }
+.diploma-area p { color: rgba(234,249,255,.75); margin-bottom: 25px; }
+
+/* =========================================================
+   TIMELINE
+   ========================================================= */
 .timeline { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(5,1fr); gap: 18px; counter-reset: step; }
 .timeline li { padding: 26px; text-align: center; position: relative; }
 .timeline li b { color: #57D9FF; font-size: 12px; letter-spacing: 3px; }
@@ -391,68 +579,9 @@ button { font-family: inherit; }
 @media (max-width: 1000px) { .timeline { grid-template-columns: repeat(2,1fr); } }
 @media (max-width: 500px)  { .timeline { grid-template-columns: 1fr; } }
 
-/* ---------- Brands ---------- */
-.brands { overflow: hidden; padding: 20px 0; mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
-.brands__track {
-  display: flex; gap: 60px; width: max-content;
-  animation: marquee 28s linear infinite;
-}
-.brands__track span { font-size: 26px; font-weight: 700; opacity: .55; letter-spacing: 2px; transition: opacity .3s, color .3s; }
-.brands__track span:hover { opacity: 1; color: #57D9FF; }
-@keyframes marquee { to { transform: translateX(-50%); } }
-
-/* ---------- Compare ---------- */
-.compare {
-  position: relative; height: 460px; border-radius: var(--radius-lg); overflow: hidden;
-  user-select: none; margin-bottom: 40px;
-}
-.compare__before, .compare__after {
-  position: absolute; inset: 0; background-size: cover; background-position: center;
-}
-.compare__after { clip-path: inset(0 0 0 50%); transition: clip-path .05s linear; }
-.compare__tag {
-  position: absolute; top: 16px; left: 16px; padding: 6px 12px; border-radius: 999px;
-  background: rgba(3,27,52,.55); backdrop-filter: blur(10px);
-  font-size: 12px; letter-spacing: 2px; text-transform: uppercase; border: 1px solid var(--glass-brd);
-}
-.compare__tag--after { left: auto; right: 16px; background: rgba(0,184,255,.4); }
-.compare__handle {
-  position: absolute; top: 0; bottom: 0; left: 50%; width: 3px;
-  background: linear-gradient(180deg, transparent, #57D9FF, transparent);
-  cursor: ew-resize;
-}
-.compare__handle i {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-  width: 46px; height: 46px; border-radius: 50%; background: var(--grad-primary);
-  color: #fff; display: grid; place-items: center; box-shadow: var(--shadow-glow);
-}
-
-/* ---------- Gallery ---------- */
-.gallery-filter { display: flex; gap: 10px; justify-content: center; margin: 20px 0 30px; flex-wrap: wrap; }
-.chip {
-  padding: 8px 18px; border-radius: 999px; border: 1px solid var(--glass-brd);
-  background: rgba(255,255,255,.05); color: inherit; cursor: pointer; font-size: 13px;
-  transition: .3s;
-}
-.chip.is-active, .chip:hover { background: var(--grad-primary); color: #fff; border-color: transparent; }
-
-.gallery { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
-.gallery__item { overflow: hidden; }
-.gallery__item .ph { height: 220px; transition: transform .5s; }
-.gallery__item:hover .ph { transform: scale(1.08); }
-.gallery__item figcaption { padding: 12px 16px; font-size: 13px; color: rgba(234,249,255,.75); }
-.gallery__item.is-hidden { display: none; }
-.ph { background-size: cover; background-position: center; background-repeat: no-repeat; }
-.ph--1 { background: linear-gradient(135deg,#1a2436,#0b1220); }
-.ph--2 { background: linear-gradient(135deg,#00B8FF,#0B4F8C); }
-.ph--3 { background: linear-gradient(135deg,#2a2f3a,#111827); }
-.ph--4 { background: linear-gradient(135deg,#57D9FF,#00B8FF); }
-.ph--5 { background: linear-gradient(135deg,#1c2333,#0f172a); }
-.ph--6 { background: linear-gradient(135deg,#0B4F8C,#57D9FF); }
-@media (max-width: 900px) { .gallery { grid-template-columns: repeat(2,1fr); } }
-@media (max-width: 500px) { .gallery { grid-template-columns: 1fr; } }
-
-/* ---------- Reviews ---------- */
+/* =========================================================
+   REVIEWS
+   ========================================================= */
 .reviews { padding-bottom: 50px !important; }
 .review { padding: 30px; height: 100%; }
 .review__avatar {
@@ -465,39 +594,75 @@ button { font-family: inherit; }
 .review span { font-size: 13px; color: rgba(234,249,255,.6); }
 .swiper-pagination-bullet { background: #57D9FF; }
 
-/* ---------- Calculators / Forms ---------- */
-.calc { padding: 34px; }
-.calc h3 { margin: 8px 0 6px; font-size: 22px; }
-.field { display: grid; gap: 6px; margin-top: 16px; }
-.field label { font-size: 13px; color: rgba(234,249,255,.75); letter-spacing: .3px; }
-.field input, .field select, .field textarea {
-  width: 100%; padding: 13px 14px; border-radius: 12px;
-  background: rgba(255,255,255,.06); border: 1px solid var(--glass-brd);
-  color: inherit; font-family: inherit; font-size: 15px; outline: none;
-  transition: border .2s, box-shadow .2s, background .2s;
+/* =========================================================
+   EMPRESAS PARCEIRAS
+   ========================================================= */
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 700px;
+  margin: 0 auto;
 }
-.field input:focus, .field select:focus, .field textarea:focus {
-  border-color: #57D9FF; box-shadow: 0 0 0 4px rgba(87,217,255,.15);
-  background: rgba(255,255,255,.09);
+.partner-card {
+  padding: 40px 30px;
+  text-align: center;
+  transition: transform .35s, box-shadow .35s;
 }
-.field select option { background: #072a4d; color: #fff; }
-body.light .field select option { background: #fff; color: #0b1220; }
-
-.result {
-  margin-top: 22px; padding: 18px 20px; border-radius: 14px;
-  display: flex; justify-content: space-between; align-items: center;
-  background: linear-gradient(135deg, rgba(0,184,255,.15), rgba(11,79,140,.25));
-  border: 1px solid rgba(87,217,255,.3);
+.partner-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,184,255,.25); }
+.partner-card__logo {
+  width: 140px;
+  height: 80px;
+  object-fit: contain;
+  margin: 0 auto 24px;
+  border-radius: 8px;
 }
-.result span { color: rgba(234,249,255,.75); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
-.result b { font-size: 22px; color: #57D9FF; }
+.partner-card__phone {
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
 
-.form { padding: 30px; }
-.form__status { font-size: 13px; margin: 12px 0 0; min-height: 18px; text-align: center; }
-.form__status.is-ok { color: #7BE495; }
-.form__status.is-err { color: #FF8A8A; }
+/* =========================================================
+   CONTATO
+   ========================================================= */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.contact-card {
+  padding: 40px 24px;
+  text-align: center;
+  transition: transform .35s, box-shadow .35s;
+}
+.contact-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,184,255,.25); }
+.contact-card__icon {
+  font-size: 48px;
+  color: #57D9FF;
+  margin-bottom: 18px;
+  display: block;
+  text-shadow: 0 0 25px rgba(87,217,255,.6);
+}
+.contact-card h3 { font-size: 22px; margin-bottom: 8px; }
+.contact-card p { color: rgba(234,249,255,.75); margin-bottom: 20px; font-size: 14px; }
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.contact-info li { font-size: 15px; }
 
-/* ---------- FAQ ---------- */
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; max-width: 400px; }
+}
+
+/* =========================================================
+   FAQ
+   ========================================================= */
 .faq { display: grid; gap: 14px; max-width: 820px; margin: 0 auto; }
 .faq details { padding: 18px 22px; cursor: pointer; }
 .faq summary { list-style: none; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
@@ -508,12 +673,15 @@ body.light .field select option { background: #fff; color: #0b1220; }
 .faq details[open] summary::after { transform: rotate(45deg); }
 .faq p { margin: 12px 0 0; color: rgba(234,249,255,.75); }
 
-/* ---------- Map ---------- */
+/* =========================================================
+   MAP
+   ========================================================= */
 .map { overflow: hidden; padding: 6px; }
 .map iframe { width: 100%; height: 420px; border: 0; border-radius: calc(var(--radius) - 6px); filter: hue-rotate(180deg) invert(.92); }
-body.light .map iframe { filter: none; }
 
-/* ---------- Footer ---------- */
+/* =========================================================
+   FOOTER
+   ========================================================= */
 .footer { padding: 70px 0 30px; border-top: 1px solid var(--glass-brd); background: rgba(3,27,52,.4); backdrop-filter: blur(10px); }
 .footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 40px; }
 .footer h5 { margin: 0 0 14px; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: #57D9FF; }
@@ -528,7 +696,9 @@ body.light .map iframe { filter: none; }
 @media (max-width: 900px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 500px) { .footer__grid { grid-template-columns: 1fr; } }
 
-/* ---------- Floating buttons ---------- */
+/* =========================================================
+   FLOATING BUTTONS
+   ========================================================= */
 .fab {
   position: fixed; right: 22px; width: 54px; height: 54px; border-radius: 50%;
   display: grid; place-items: center; font-size: 22px;
@@ -553,22 +723,12 @@ body.light .map iframe { filter: none; }
 .fab--top.is-visible { opacity: 1; visibility: visible; }
 .fab--top:hover { transform: translateY(-4px); }
 
-/* ---------- Logo (imagem) ----------
-   Quando você definir o src da imagem no HTML, ela aparecerá
-   automaticamente ao lado do texto. Se o src estiver vazio, o
-   atributo onerror esconde a tag <img>. */
+/* =========================================================
+   LOGO (IMAGEM) - AINDA MAIS VISÍVEL
+   ========================================================= */
 .nav__logo-img {
-  height: 38px; width: auto; border-radius: 10px;
+  height: 56px; /* Aumentado de 48px para 56px */
+  width: auto;
+  border-radius: 14px;
   object-fit: contain;
-}
-
-/* ---------- Destaque para empresas parceiras (Ecoforte / Expander) ---------- */
-.brands__track .brand-partner {
-  color: #57D9FF;
-  opacity: 1;
-  text-shadow: 0 0 12px rgba(87,217,255,.35);
-}
-body.light .brands__track .brand-partner {
-  color: #0B4F8C;
-  text-shadow: none;
 }

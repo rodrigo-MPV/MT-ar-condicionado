@@ -2,16 +2,20 @@
    MT Ar-Condicionado — Interações JavaScript
    Cada bloco abaixo controla uma funcionalidade do site.
    Comentários em português para facilitar a manutenção.
+
+   NOVIDADES:
+   - Inicialização dos 3 carrosséis da galeria (Swiper).
+   - Lógica do Lightbox: ao clicar em qualquer foto da galeria,
+     ela é ampliada em tela cheia.
+   - Fechamento do lightbox ao clicar no botão X ou fora da imagem.
    ========================================================= */
 (() => {
   'use strict';
 
-  // Atalhos: $ seleciona um elemento; $$ seleciona vários (retorna array)
   const $  = (s, ctx = document) => ctx.querySelector(s);
   const $$ = (s, ctx = document) => Array.from(ctx.querySelectorAll(s));
 
-  /* ---------- Loader (tela de carregamento inicial) ----------
-     Some após a página carregar completamente. */
+  /* ---------- Loader ---------- */
   window.addEventListener('load', () => {
     setTimeout(() => $('#loader')?.classList.add('is-hidden'), 900);
   });
@@ -19,13 +23,12 @@
   /* ---------- Ano dinâmico no rodapé ---------- */
   $('#year').textContent = new Date().getFullYear();
 
-  /* ---------- Bibliotecas de animação ----------
-     AOS: animações ao rolar a página
-     VanillaTilt: efeito 3D nos cards com classe .tilt
-     Swiper: carrossel de avaliações */
+  /* ---------- Bibliotecas de animação ---------- */
   document.addEventListener('DOMContentLoaded', () => {
     if (window.AOS) AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 60 });
     if (window.VanillaTilt) VanillaTilt.init($$('.tilt'), { max: 8, speed: 500, glare: true, 'max-glare': .15 });
+
+    // Swiper de avaliações
     if (window.Swiper) {
       new Swiper('.reviews', {
         loop: true, autoplay: { delay: 4500, disableOnInteraction: false },
@@ -33,13 +36,41 @@
         spaceBetween: 20,
         breakpoints: { 0: { slidesPerView: 1 }, 700: { slidesPerView: 2 }, 1100: { slidesPerView: 3 } }
       });
+
+      // ========================================================
+      // INICIALIZAÇÃO DOS CARROSSÉIS DA GALERIA
+      // Cada carrossel é um Swiper independente.
+      // Todos compartilham a mesma configuração visual.
+      // ========================================================
+      const swiperConfig = {
+        loop: true,                    // Loop infinito
+        spaceBetween: 16,            // Espaço entre slides
+        slidesPerView: 1,            // Padrão para mobile
+        centeredSlides: true,
+        grabCursor: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+          640:  { slidesPerView: 1.5 },
+          900:  { slidesPerView: 2.2 },
+          1200: { slidesPerView: 3 }
+        }
+      };
+
+      // Inicializa cada carrossel da galeria pelo ID
+      new Swiper('#swiperInstalacao', swiperConfig);
+      new Swiper('#swiperPreventiva', swiperConfig);
+      new Swiper('#swiperCorretiva', swiperConfig);
     }
   });
 
-  /* ---------- Barra de progresso e menu ao rolar ----------
-     - Aplica sombra no menu quando o usuário rola
-     - Mostra botão "voltar ao topo" após 600px
-     - Preenche a barra de progresso azul no topo */
+  /* ---------- Barra de progresso e menu ao rolar ---------- */
   const nav = $('#nav');
   const scrollProgress = $('#scrollProgress');
   const toTop = $('#toTop');
@@ -52,8 +83,7 @@
   };
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  /* ---------- Menu mobile (hambúrguer) ----------
-     Abre/fecha o menu em telas pequenas. */
+  /* ---------- Menu mobile ---------- */
   const burger = $('#navBurger');
   const mobile = $('#navMobile');
   burger.addEventListener('click', () => {
@@ -61,14 +91,12 @@
     burger.setAttribute('aria-expanded', open);
     mobile.setAttribute('aria-hidden', !open);
   });
-  // Ao clicar em um link, fecha o menu automaticamente
   $$('#navMobile a').forEach(a => a.addEventListener('click', () => {
     mobile.classList.remove('is-open');
     burger.setAttribute('aria-expanded', 'false');
   }));
 
-  /* ---------- Alternador de tema claro/escuro ----------
-     Salva a preferência do usuário no localStorage. */
+  /* ---------- Alternador de tema claro/escuro ---------- */
   const themeBtn = $('#themeToggle');
   const setTheme = t => {
     document.body.classList.toggle('light', t === 'light');
@@ -81,8 +109,7 @@
   /* ---------- Botão "voltar ao topo" ---------- */
   toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  /* ---------- Partículas de neve no fundo (canvas) ----------
-     Efeito decorativo de flocos caindo suavemente. */
+  /* ---------- Partículas de neve ---------- */
   const canvas = $('#snowCanvas');
   const ctx = canvas.getContext('2d');
   let W, H, flakes = [];
@@ -90,7 +117,6 @@
     W = canvas.width = window.innerWidth;
     H = canvas.height = window.innerHeight;
     const count = Math.min(120, Math.floor(W / 14));
-    // Cria os flocos com posição, tamanho, velocidade e transparência aleatórios
     flakes = Array.from({ length: count }, () => ({
       x: Math.random() * W,
       y: Math.random() * H,
@@ -102,7 +128,6 @@
   };
   resize();
   window.addEventListener('resize', resize);
-  // Loop de animação — desenha e move os flocos a cada frame
   const tick = () => {
     ctx.clearRect(0, 0, W, H);
     flakes.forEach(f => {
@@ -113,7 +138,6 @@
       ctx.shadowBlur = 6;
       ctx.fill();
       f.y += f.s; f.x += f.d;
-      // Reposiciona quando sai da tela
       if (f.y > H) { f.y = -5; f.x = Math.random() * W; }
       if (f.x > W) f.x = 0; if (f.x < 0) f.x = W;
     });
@@ -121,9 +145,7 @@
   };
   tick();
 
-  /* ---------- Contadores animados ----------
-     Anima os números na seção HERO (clientes, projetos, etc.)
-     quando entram na tela. */
+  /* ---------- Contadores animados ---------- */
   const counters = $$('.counter');
   const runCounter = el => {
     const target = +el.dataset.target;
@@ -143,99 +165,7 @@
   }, { threshold: .4 });
   counters.forEach(c => io.observe(c));
 
-  /* ---------- Comparador "Antes x Depois" ----------
-     O usuário arrasta o divisor para revelar a imagem "depois". */
-  const compare = $('#compare'), after = $('#compareAfter'), handle = $('#compareHandle');
-  let dragging = false;
-  const setPos = (x) => {
-    const rect = compare.getBoundingClientRect();
-    const px = Math.max(0, Math.min(rect.width, x - rect.left));
-    const pct = (px / rect.width) * 100;
-    after.style.clipPath = `inset(0 0 0 ${pct}%)`;
-    handle.style.left = pct + '%';
-  };
-  handle.addEventListener('pointerdown', e => { dragging = true; handle.setPointerCapture(e.pointerId); });
-  window.addEventListener('pointerup', () => dragging = false);
-  window.addEventListener('pointermove', e => { if (dragging) setPos(e.clientX); });
-
-  /* ---------- Filtro da galeria ----------
-     Filtra as fotos por categoria (Todos / Antes / Depois).
-     ============================================================
-     >>> PARA TROCAR AS FOTOS DA GALERIA <<<
-     Abra o arquivo public/mt-ar/style.css e procure pelas classes
-     .ph--1, .ph--2, .ph--3, .ph--4, .ph--5, .ph--6.
-     Cada uma representa uma foto da galeria. Basta substituir
-     o `background: linear-gradient(...)` por
-     `background-image: url('caminho/da/sua/foto.jpg');`
-     Exemplo:
-       .ph--1 { background-image: url('images/sala-antes.jpg'); }
-     ============================================================ */
-  $$('.gallery-filter .chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      $$('.gallery-filter .chip').forEach(c => c.classList.remove('is-active'));
-      chip.classList.add('is-active');
-      const f = chip.dataset.filter;
-      $$('.gallery__item').forEach(it => {
-        it.classList.toggle('is-hidden', f !== 'all' && it.dataset.cat !== f);
-      });
-    });
-  });
-
-  /* ---------- Calculadora de BTUs ----------
-     Fórmula: área*600 + pessoas extras*600 + eletrônicos*600
-     Arredonda para a faixa comercial mais próxima. */
-  const btuArea = $('#btuArea'), btuP = $('#btuPessoas'), btuE = $('#btuEletronicos'), btuR = $('#btuResult');
-  const calcBtu = () => {
-    const area = +btuArea.value || 0;
-    const pessoas = Math.max(0, (+btuP.value || 1) - 1);
-    const eletronicos = +btuE.value || 0;
-    let btu = area * 600 + pessoas * 600 + eletronicos * 600;
-    const faixas = [9000, 12000, 18000, 22000, 24000, 30000, 36000, 48000, 60000];
-    const rec = faixas.find(v => v >= btu) || 60000;
-    btuR.textContent = rec.toLocaleString('pt-BR') + ' BTUs';
-  };
-  [btuArea, btuP, btuE].forEach(el => el.addEventListener('input', calcBtu));
-  calcBtu();
-
-  /* ---------- Calculadora de Orçamento estimado ----------
-     Multiplica valor base do serviço por tipo de equipamento
-     e fator de BTUs. É apenas uma estimativa. */
-  const oT = $('#orcTipo'), oB = $('#orcBtu'), oS = $('#orcServico'), oR = $('#orcResult');
-  const tipoMult = { split: 1, inverter: 1.25, multi: 1.6, piso: 1.4 };
-  const servBase = { instalacao: 900, manutencao: 220, higienizacao: 260, recarga: 320 };
-  const calcOrc = () => {
-    const btu = +oB.value;
-    const base = servBase[oS.value];
-    const fatorBtu = 1 + (btu - 9000) / 30000;
-    const total = base * (tipoMult[oT.value] || 1) * Math.max(1, fatorBtu);
-    oR.textContent = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-  };
-  [oT, oB, oS].forEach(el => el.addEventListener('change', calcOrc));
-  calcOrc();
-
-  /* ---------- Formulário de contato ----------
-     Simula envio. Para integrar com EmailJS, descomente a linha
-     abaixo e configure SERVICE_ID / TEMPLATE_ID / PUBLIC_KEY. */
-  const form = $('#contactForm'), status = $('#formStatus');
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    status.textContent = 'Enviando…';
-    status.className = 'form__status';
-    const data = Object.fromEntries(new FormData(form).entries());
-    try {
-      // await emailjs.send('SERVICE_ID', 'TEMPLATE_ID', data, 'PUBLIC_KEY');
-      await new Promise(r => setTimeout(r, 700));
-      status.textContent = '✅ Solicitação enviada! Em breve entramos em contato.';
-      status.classList.add('is-ok');
-      form.reset();
-    } catch (err) {
-      status.textContent = '❌ Não foi possível enviar. Tente novamente ou fale no WhatsApp.';
-      status.classList.add('is-err');
-    }
-  });
-
-  /* ---------- Brilho do mouse nos cards de serviço ----------
-     Efeito de luz que segue o cursor dentro do card. */
+  /* ---------- Brilho do mouse nos cards de serviço ---------- */
   $$('.service').forEach(card => {
     card.addEventListener('mousemove', (e) => {
       const r = card.getBoundingClientRect();
@@ -243,4 +173,75 @@
       card.style.setProperty('--y', (e.clientY - r.top) + 'px');
     });
   });
+
+  // ============================================================
+  // LÓGICA DO LIGHTBOX
+  // Permite que o usuário clique em qualquer foto da galeria
+  // e a veja ampliada em tela cheia.
+  // ============================================================
+  const lightbox = $('#lightbox');
+  const lightboxImg = $('#lightboxImg');
+  const lightboxClose = $('#lightboxClose');
+
+  // Seleciona TODAS as imagens que estão dentro da seção da galeria
+  const galleryImages = $$('#galeria .gallery-img');
+
+  // Abre o lightbox ao clicar em uma foto
+  galleryImages.forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden'; // Trava o scroll da página
+    });
+  });
+
+  // Fecha o lightbox ao clicar no botão X
+  lightboxClose.addEventListener('click', closeLightbox);
+
+  // Fecha o lightbox ao clicar fora da imagem (no fundo escuro)
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Fecha o lightbox ao pressionar a tecla ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+  });
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightboxImg.src = '';
+    document.body.style.overflow = ''; // Restaura o scroll
+  }
+
+  // ============================================================
+  // GUIA RÁPIDO DE EDIÇÃO:
+  //
+  // 1. FOTOS DA GALERIA:
+  //    - Procure a seção #galeria no HTML.
+  //    - Dentro de cada carrossel (ex: #swiperInstalacao), encontre as <img>.
+  //    - Altere o 'src' de cada <img> para o caminho da sua foto.
+  //    - Exemplo: <img src="img/minha-foto.jpg" alt="Descrição">
+  //    - Você pode adicionar ou remover slides copiando/colando as <div class="swiper-slide">.
+  //
+  // 2. DIPLOMA EM PDF:
+  //    - Procure o link na seção #qualificacoes: href="img/diploma.pdf".
+  //    - Substitua pelo caminho real do seu arquivo.
+  //
+  // 3. LINK DO INSTAGRAM:
+  //    - Já está configurado para https://www.instagram.com/ar.com_2023/.
+  //    - Para alterar, procure por "instagram.com/ar.com_2023" no HTML e troque.
+  //
+  // 4. LOGOS DAS EMPRESAS PARCEIRAS:
+  //    - Procure a seção #parceiros no HTML.
+  //    - Altere o 'src' das <img> e os telefones nos links <a>.
+  //
+  // 5. LOGO PRINCIPAL:
+  //    - Substitua o arquivo "img/logo.png" pela sua logo.
+  //    - Para alterar o tamanho, edite o CSS em .nav__logo-img e .hero__logo-img.
+  // ============================================================
+
 })();
